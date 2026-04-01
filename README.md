@@ -1,0 +1,1 @@
+# Django_college_blog
