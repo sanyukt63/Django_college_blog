@@ -1,0 +1,17 @@
+<div class="pagination" style="margin-top: 30px; text-align: center; font-family: Arial, sans-serif;">
+    <span class="step-links">
+        {% if page_obj.has_previous %}
+            <a href="?{% if status_filter %}status={{ status_filter }}&amp;{% endif %}page={{ page_obj.previous_page_number }}" style="display: inline-block; padding: 8px 12px; margin: 0 4px; background: #1f2937; color: white; text-decoration: none; border-radius: 4px;">Previous</a>
+        {% endif %}
+    </span>
+    
+    <span class="current" style="display: inline-block; padding: 8px 12px; margin: 0 3px; background: #ffffff; color: #1d1c1c; border-radius: 100px; font-weight: bold;">
+        Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
+    </span>
+    
+    <span class="step-links">
+        {% if page_obj.has_next %}
+            <a href="?{% if status_filter %}status={{ status_filter }}&amp;{% endif %}page={{ page_obj.next_page_number }}" style="display: inline-block; padding: 8px 12px; margin: 0 4px; background: #1f2937; color: white; text-decoration: none; border-radius: 4px;">Next</a>
+        {% endif %}
+    </span>
+</div>

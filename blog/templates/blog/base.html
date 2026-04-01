@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}College Blog{% endblock %}</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+    --primary: #1f2937;
+    --secondary: #4b5563;
+    --background: #ffffff;
+    --card-bg: #ffffff;
+    --border: #d1d5db;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    background: var(--background);
+    color: var(--primary);
+}
+
+header {
+    background: var(--card-bg);
+    padding: 1rem 2rem;
+    border-bottom: 1px solid var(--border);
+}
+
+.navbar {
+    max-width: 1100px;
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo a {
+    font-weight: bold;
+    color: var(--primary);
+    text-decoration: none;
+}
+
+.nav-links {
+    display: flex;
+    gap: 1rem;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: var(--secondary);
+}
+
+.nav-links a:hover {
+    color: var(--primary);
+}
+
+.container {
+    max-width: 1100px;
+    margin: auto;
+    padding: 2rem;
+}
+
+.post-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 1.5rem;
+}
+
+.post-card {
+    background: var(--card-bg);
+    border: none;
+    border-radius: 6px;
+    overflow: hidden;
+}
+
+.post-image {
+    width: 100%;
+    height: 160px;
+    object-fit: cover;
+}
+
+.post-content {
+    padding: 1rem;
+}
+
+.post-meta {
+    font-size: 0.8rem;
+    color: var(--secondary);
+}
+
+.tags {
+    font-size: 0.85rem;
+    color: #6b7280;
+    margin: 8px 0;
+}
+
+.tags:empty {
+    display: none;
+}
+
+.status-badge {
+    padding: 2px 8px;
+    border-radius: 12px;
+    font-size: 0.75rem;
+    font-weight: 500;
+}
+
+.status-published {
+    background: #10b981;
+    color: white;
+}
+
+.status-draft {
+    background: #f59e0b;
+    color: white;
+}
+
+.category {
+    display: inline-block;
+    font-size: 0.75rem;
+    color: var(--secondary);
+    margin-top: 5px;
+}
+
+h2 {
+    margin: 8px 0;
+    font-size: 1.1rem;
+}
+
+.btn {
+    display: inline-block;
+    padding: 6px 10px;
+    background: var(--primary);
+    color: #ffffff;
+    text-decoration: none;
+    border-radius: 4px;
+    font-size: 0.8rem;
+}
+
+.btn-secondary {
+    background: #e5e7eb;
+    color: var(--primary);
+}
+
+.btn-danger {
+    background: #dc2626;
+    color: #ffffff;
+}
+.post-footer {
+    border-top: 1px solid var(--border);
+    padding: 8px;
+    display: flex;
+    justify-content: space-between;
+}
+
+footer {
+    text-align: center;
+    padding: 1.5rem;
+    border-top: 1px solid var(--border);
+    background: var(--card-bg);
+}
+
+@media (max-width: 600px) {
+    .nav-links {
+        flex-direction: column;
+        align-items: center;
+    }
+}
+    </style>
+</head>
+
+<body>
+
+<header>
+    <nav class="navbar">
+        <div class="logo">
+            <a href="{% url 'blog:post_list' %}">COLLEGE BLOG</a>
+        </div>
+
+        <div class="nav-links">
+            <a href="{% url 'blog:post_list' %}">Home</a>
+
+        </div>
+    </nav>
+</header>
+
+<main class="container">
+
+    {% block content %}
+
+    <div class="post-grid">
+
+        <article class="post-card">
+
+            <img src="https://source.unsplash.com/400x300/?technology" class="post-image">
+
+            <div class="post-content">
+
+                <div class="post-meta">
+                    <span class="badge">Published</span>
+                    March 16, 2026
+                </div>
+
+                <span class="category">AI</span>
+
+                <h2>The Future of AI in Campus Research</h2>
+
+                <p>
+                    Exploring how modern AI tools are improving student productivity and academic research.
+                </p>
+
+                <a href="#" class="btn">Read More</a>
+
+            </div>
+
+            <div class="post-footer">
+                <div>
+                    <a href="#" class="btn btn-secondary btn-small">Edit</a>
+                    <a href="#" class="btn btn-danger btn-small">Delete</a>
+                </div>
+
+                <div class="like-btn">
+                    24 Likes
+                </div>
+            </div>
+
+        </article>
+
+    </div>
+
+    {% endblock %}
+</main>
+
+<footer>
+    
+</footer>
+
+</body>
+</html>.
