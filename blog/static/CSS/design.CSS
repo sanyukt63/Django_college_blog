@@ -1,0 +1,268 @@
+:root {
+    --primary: #1f2937;
+    --secondary: #4b5563;
+    --background: #ffffff;
+    --card-bg: #ffffff;
+    --border: #d1d5db;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    background: var(--background);
+    color: var(--primary);
+}
+
+header {
+    background: var(--card-bg);
+    padding: 1rem 2rem;
+    border-bottom: 1px solid var(--border);
+}
+
+.navbar {
+    max-width: 1100px;
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo a {
+    font-weight: bold;
+    color: var(--primary);
+    text-decoration: none;
+    font-size: 1.5rem;
+}
+
+.nav-links {
+    display: flex;
+    gap: 1rem;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: var(--secondary);
+}
+
+.nav-links a:hover {
+    color: var(--primary);
+}
+
+.main-container {
+    max-width: 1100px;
+    margin: auto;
+    padding: 2rem;
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 2rem;
+}
+
+.content {
+    min-height: 400px;
+}
+
+.sidebar {
+    background: var(--card-bg);
+    padding: 1.5rem;
+    border-radius: 8px;
+    border: 1px solid var(--border);
+}
+
+#sidebar h3 {
+    margin-top: 0;
+    color: var(--primary);
+}
+
+.post-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 1.5rem;
+}
+
+.post-card {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    overflow: hidden;
+    transition: box-shadow 0.2s;
+}
+
+.post-card:hover {
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.post-image {
+    width: 100%;
+    height: 160px;
+    object-fit: cover;
+}
+
+.post-content {
+    padding: 1.5rem;
+}
+
+.post-meta {
+    font-size: 0.85rem;
+    color: var(--secondary);
+    margin-bottom: 0.5rem;
+}
+
+.category {
+    display: inline-block;
+    font-size: 0.8rem;
+    background: var(--secondary);
+    color: white;
+    padding: 2px 8px;
+    border-radius: 12px;
+    margin-bottom: 0.5rem;
+}
+
+h1, h2, h3 {
+    color: var(--primary);
+}
+
+.post-meta .status-badge {
+    padding: 3px 8px;
+    border-radius: 12px;
+    font-size: 0.75rem;
+    font-weight: 500;
+}
+
+.status-published {
+    background: #10b981;
+    color: white;
+}
+
+.status-draft {
+    background: #f59e0b;
+    color: white;
+}
+
+.tags {
+    font-size: 0.85rem;
+    color: #6b7280;
+    margin: 1rem 0;
+}
+
+.tags a {
+    color: var(--primary);
+    text-decoration: none;
+}
+
+.tags a:hover {
+    text-decoration: underline;
+}
+
+.btn {
+    display: inline-block;
+    padding: 8px 16px;
+    background: var(--primary);
+    color: white;
+    text-decoration: none;
+    border-radius: 6px;
+    font-size: 0.9rem;
+    transition: background 0.2s;
+}
+
+.btn:hover {
+    background: var(--secondary);
+}
+
+.btn-secondary {
+    background: #e5e7eb;
+    color: var(--primary);
+}
+
+.btn-secondary:hover {
+    background: #d1d5db;
+}
+
+.btn-danger {
+    background: #dc2626;
+    color: white;
+}
+
+.btn-danger:hover {
+    background: #b91c1c;
+}
+
+.read-more {
+    font-weight: 500;
+}
+
+.post-footer {
+    border-top: 1px solid var(--border);
+    padding: 1rem 1.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.post-entry {
+    line-height: 1.7;
+    margin: 2rem 0;
+}
+
+.back-btn {
+    background: var(--secondary);
+    color: white;
+    padding: 10px 20px;
+    border-radius: 6px;
+    text-decoration: none;
+}
+
+.pagination {
+    text-align: center;
+    margin: 2rem 0;
+}
+
+.pagination a {
+    padding: 8px 12px;
+    margin: 0 4px;
+    background: var(--primary);
+    color: white;
+    text-decoration: none;
+    border-radius: 6px;
+}
+
+.pagination .current {
+    background: var(--secondary);
+    padding: 8px 12px;
+    border-radius: 6px;
+    font-weight: bold;
+}
+
+.comment {
+    background: #f9fafb;
+    padding: 1.5rem;
+    margin: 1.5rem 0;
+    border-left: 4px solid var(--primary);
+    border-radius: 4px;
+}
+
+footer {
+    text-align: center;
+    padding: 2rem;
+    border-top: 1px solid var(--border);
+    background: var(--card-bg);
+    margin-top: 4rem;
+    color: var(--secondary);
+}
+
+@media (max-width: 768px) {
+    .main-container {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+        padding: 1rem;
+    }
+    
+    .navbar {
+        flex-direction: column;
+        gap: 1rem;
+    }
+    
+    .nav-links {
+        flex-direction: column;
+        align-items: center;
+    }
+}

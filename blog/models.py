@@ -6,7 +6,16 @@ from django.urls import reverse
 from django.conf import settings
 from taggit.managers import TaggableManager
 
+class PublishedManager(models.Manager):
+    def get_queryset(self):
+        return super().get_queryset().filter(status="published")
+
+
+
 class Post(models.Model):
+    objects = models.Manager()
+    published = PublishedManager()
+    
     title = models.CharField(max_length=200)
     slug = models.SlugField(max_length=200, unique=True)
     body = models.TextField()
@@ -21,7 +30,9 @@ class Post(models.Model):
                                                       ('published', 'Published')),
                                                       default='draft')
     tags = TaggableManager()
-
+    
+    category = models.CharField(max_length=100, default="General")
+    
     class Meta:
         ordering = ('-publish',)
 

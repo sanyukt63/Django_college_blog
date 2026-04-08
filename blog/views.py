@@ -1,12 +1,12 @@
 from django.shortcuts import render, get_object_or_404
 from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
 from .models import Post
-from .forms import EmailPostForm, CommentForm
+from .forms import EmailPostForm, CommentForm, SearchForm
 from django.core.mail import send_mail
 from taggit.models import Tag
 from django.views.decorators.http import require_POST
 from django.conf import settings
-from django.db.models import Count
+from django.db.models import Count, Q
 
 # Remove broken incomplete tag filter function - post_list works with status filter
 def post_list(request, tag_slug=None):
@@ -123,4 +123,28 @@ def post_comment(request, post_id):
         'post': post,
         'form': form,
         'comment': comment
+    })
+
+def post_search(request):
+    form = SearchForm()
+    query = None
+    results = Post.published.none()
+    total_results = 0
+
+    if 'query' in request.GET:
+        form = SearchForm(request.GET)
+        if form.is_valid():
+            query = form.cleaned_data['query']
+            search_criteria = (
+                Q(title__icontains=query) |
+                Q(body__icontains=query)
+            )
+            results = Post.published.filter(search_criteria).distinct()
+            total_results = results.count()
+
+    return render(request, 'blog/post/search.html', {
+        'form': form,
+        'query': query,
+        'results': results,
+        'total_results': total_results
     })
